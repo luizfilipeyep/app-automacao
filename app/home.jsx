@@ -1,9 +1,12 @@
-import { StyleSheet, Text, View, Image } from "react-native"
+import { StyleSheet, Text, View, Image} from "react-native"
 import { Link } from "expo-router"
 import { StatusBar } from 'expo-status-bar'
 
 import { useFonts, Montserrat_500Medium } from "@expo-google-fonts/montserrat"
 import { Inter_400Regular } from "@expo-google-fonts/inter"
+
+import ConfigIcon from "../assets/icons/config.svg"
+import HomeIcon from "../assets/icons/home.svg"
 
 function Home() {
   const useName = "Luiz"
@@ -19,10 +22,15 @@ function Home() {
 
   return ( 
     <View style={styles.wrapper}>
-      <View>
+      <View style={styles.mainWrapper} >
         <Text style={styles.mainText}>Olá {useName}, {"\n"}<Text style={styles.mainTextSecondColor}>Bem-vindo {"\n"}ao Lar!</Text></Text>
+        
+        <View style={styles.mainIconWrapper}>
+          <ConfigIcon width="25" height="25" />
+          <HomeIcon width="25" height="25" />
+        </View>
       </View>
-      
+     
       <StatusBar style="dark" />
     </View>
    );
@@ -30,7 +38,13 @@ function Home() {
 
 const styles = StyleSheet.create({
   wrapper: {
-    padding: 20
+    padding: 18
+  },
+  mainWrapper: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "start",
+    justifyContent: "space-between"
   },
   mainText: {
     fontFamily: "Montserrat_500Medium",
@@ -41,6 +55,11 @@ const styles = StyleSheet.create({
   },
   mainTextSecondColor: {
     color: "#818181"
+  },
+  mainIconWrapper: {
+    display: "flex",
+    flexDirection: "row",
+    gap: 15
   }
 })
 
