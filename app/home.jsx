@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image} from "react-native"
+import { StyleSheet, Text, View, Image, ScrollView} from "react-native"
 import { Link } from "expo-router"
 import { StatusBar } from 'expo-status-bar'
 
@@ -7,6 +7,7 @@ import { Inter_400Regular } from "@expo-google-fonts/inter"
 
 import ConfigIcon from "../assets/icons/config.svg"
 import HomeIcon from "../assets/icons/home.svg"
+import Slider from "../components/Slider"
 
 function Home() {
   const useName = "Luiz"
@@ -30,6 +31,8 @@ function Home() {
           <HomeIcon width="25" height="25" />
         </View>
       </View>
+
+      <Slider />
      
       <StatusBar style="dark" />
     </View>
