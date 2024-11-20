@@ -7,7 +7,7 @@ function Slider() {
   return ( 
     <ScrollView style={styles.slider} 
       horizontal
-      snapToInterval={screenWidth}
+      snapToInterval={screenWidth - 45}
       decelerationRate="fast"
       alwaysBounceHorizontal
       showsHorizontalScrollIndicator={false}
