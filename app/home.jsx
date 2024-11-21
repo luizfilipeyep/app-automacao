@@ -7,6 +7,7 @@ import { Inter_400Regular } from "@expo-google-fonts/inter"
 
 import ConfigIcon from "../assets/icons/config.svg"
 import HomeIcon from "../assets/icons/home.svg"
+
 import Slider from "../components/Slider"
 
 function Home() {
