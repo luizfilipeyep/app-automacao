@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, ScrollView } from "react-native"
+import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from "react-native"
 import { Link } from "expo-router"
 import { StatusBar } from 'expo-status-bar'
 
@@ -34,6 +34,12 @@ function Home() {
       </View>
 
       <Slider />
+
+      <View>
+        <TouchableOpacity>
+          
+        </TouchableOpacity>
+      </View>
      
       <StatusBar style="dark" />
     </View>

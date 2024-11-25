@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { StyleSheet, Text, View, Image, ScrollView, Dimensions, TouchableOpacity} from "react-native"
+import axios from "axios"
 
 const screenWidth = Dimensions.get("window").width
 const screenHeight = Dimensions.get("window").height
@@ -26,8 +27,10 @@ function Slider() {
   const [lampStatusQ1, setLampQ1Status] = useState(0)
   const [lampStatusQ2, setLampQ2Status] = useState(0)
   const [lampStatusB, setLampBStatus] = useState(0)
-  const [lampStatusD, setLampDStatus] = useState(0)
+  const [lampStatusG, setLampGStatus] = useState(0)
 
+
+  // SALA
   const handleClickLampS = () => {
     if ( lampSStatus === 0 ) { 
       setLampSStatus(1)
@@ -37,8 +40,13 @@ function Slider() {
       setLampSStatus(0)
       setButtonSStyle(styles.lampButton)
     }
+
+    axios.put("https://192.168.0.129/api/leds/Sala", {
+      status: lampSStatus
+    })
   }
 
+  // QUARTO 1
   const handleClickLampQ1 = () => {
     if ( lampStatusQ1 === 0 ) { 
       setLampQ1Status(1)
@@ -48,8 +56,61 @@ function Slider() {
       setLampQ1Status(0)
       setButtonQ1Style(styles.lampButton)
     }
+
+    axios.put("https://192.168.0.129/api/leds/Quarto 1", {
+      status: lampStatusQ1
+    })
   }
 
+  // QUARTO 2
+  const handleClickLampQ2 = () => {
+    if ( lampStatusQ2 === 0 ) { 
+      setLampQ2Status(1)
+      setButtonQ2Style(styles.lampButtonActive)
+    }
+    if ( lampStatusQ2 === 1 ) { 
+      setLampQ2Status(0)
+      setButtonQ2Style(styles.lampButton)
+    }
+
+    axios.put("https://192.168.0.129/api/leds/Quarto 2", {
+      status: lampStatusQ2
+    })
+  }
+
+  // BANHEIRO
+  const handleClickLampB = () => {
+    if ( lampStatusB === 0 ) { 
+      setLampBStatus(1)
+      setButtonBStyle(styles.lampButtonActive)
+    }
+    if ( lampStatusB === 1 ) { 
+      setLampBStatus(0)
+      setButtonBStyle(styles.lampButton)
+    }
+
+    axios.put("https://192.168.0.129/api/leds/Banheiro", {
+      status: lampStatusB
+    })
+  }
+
+  // GARAGEM
+  const handleClickLampG = () => {
+    if ( lampStatusG === 0 ) { 
+      setLampGStatus(1)
+      setButtonGStyle(styles.lampButtonActive)
+    }
+    if ( lampStatusG === 1 ) { 
+      setLampGStatus(0)
+      setButtonGStyle(styles.lampButton)
+    }
+
+    axios.put("https://192.168.0.129/api/leds/Banheiro", {
+      status: lampStatusG
+    })
+  }
+
+  // CARREGAR FONTES
   const [fontLoaded] = useFonts({
     Montserrat_500Medium,
     Inter_400Regular
@@ -99,17 +160,50 @@ function Slider() {
             <TouchableOpacity style={styles.buttonAir}></TouchableOpacity>
           </View>
         </View>
+
+        {/* QUARTO 2 */}
         <View style={styles.item}>
           <Text style={styles.textSliderItem}>Quarto 2</Text>
+          
           <BedIcon />
+
+          <View style={styles.actionButtonsWrapper}> {/* Container dos botões de ação */}
+            <TouchableOpacity style={buttonQ2Style} onPress={handleClickLampQ2}> {/* Botão da lâmpada */}
+              <LampIcon width={25} height={35} />
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.buttonAir}></TouchableOpacity>
+          </View>
         </View>
+
+        {/* BANHEIRO */}
         <View style={styles.item}>
           <Text style={styles.textSliderItem}>Banheiro</Text>
+
           <BathtubIcon />
+
+          <View style={styles.actionButtonsWrapper}> {/* Container dos botões de ação */}
+            <TouchableOpacity style={buttonBStyle} onPress={handleClickLampB}> {/* Botão da lâmpada */}
+              <LampIcon width={25} height={35} />
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.buttonAir}></TouchableOpacity>
+          </View>
         </View>
+
+        {/* GARAGEM */}
         <View style={styles.item}>
           <Text style={styles.textSliderItem}>Garagem</Text>
+
           <GarageIcon />
+
+          <View style={styles.actionButtonsWrapper}> {/* Container dos botões de ação */}
+            <TouchableOpacity style={buttonGStyle} onPress={handleClickLampG}> {/* Botão da lâmpada */}
+              <LampIcon width={25} height={35} />
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.buttonAir}></TouchableOpacity>
+          </View>
         </View>
       </ScrollView>
     </View>
